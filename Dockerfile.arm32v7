@@ -1,0 +1,7 @@
+FROM arm32v7/ubuntu:latest
+
+COPY entrypoint.sh /
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT /entrypoint.sh
