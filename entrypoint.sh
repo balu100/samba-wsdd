@@ -7,6 +7,8 @@ wsdd
 echo done
 else
 echo "Install"
+TZ=Europe/Budapest
+ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 apt update
 apt -y upgrade
 apt install -y wget
