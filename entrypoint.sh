@@ -7,12 +7,15 @@ wsdd
 echo done
 else
 echo "Install"
-TZ=Europe/Budapest
+export TZ=Europe/Budapest
+export DEBIAN_FRONTEND=noninteractive
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 apt update
 apt -y upgrade
 apt install -y wget
 apt install -y gnupg2
+apt-get install -y tzdata
+dpkg-reconfigure --frontend noninteractive tzdata
 wget -qO - https://pkg.ltec.ch/public/conf/ltec-ag.gpg.key | apt-key add -
 rm /etc/apt/sources.list.d/wsdd.list
 echo "deb https://pkg.ltec.ch/public/ focal main" | sh -c 'cat > /etc/apt/sources.list.d/wsdd.list'
